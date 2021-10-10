@@ -1,2 +1,2 @@
 # HHOhjelmointi
-Haaga-Helian ohjelmointikurssit
+Haaga-Helian ohjelmointikursseila - JavaScript & Java ohjelmointi tunti- & tenttitiedostoja
