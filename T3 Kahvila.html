@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Kahvila</title>
+<!-- 
+Objektitaulukko: Tee ohjelma, jolla voidaan kysellä kahvilahinnastoa.
+a. 
+Kun painetaan Näytä kaikki hinnat –painiketta, näytetään kunkin kahvilatuotteen nimi ja hinta.
+(4 p.)
+b.
+Kun painetaan Näytä hinta –painiketta, näytetään lomakekenttään kirjoitetun 
+tuotteen hinta. Jos tuotetta ei ole, annetaan siitä ilmoitus. (6 p.)
+
+ -->
+</head>
+<body>
+	<h3>Kahvila</h3>
+	
+	<p>
+		<label>Nimi: </label> 
+		<input type="text" id="tuote" size="20">
+		<input type="button" value="Näytä hinta" onclick="naytaHinta()">
+	</p>
+	<p>
+		<input type="button" value="Näytä kaikki hinnat" onclick="naytaKaikki()">
+	</p>
+
+	<div id="vastaus"></div>
+
+	<script type="text/javascript">
+	var hinnasto = [
+		{   
+			nimi: 
+			"Pieni kahvi",
+			hinta: 1.0 	},
+		{   
+			nimi: "Suuri kahvi",
+			hinta: 1.5 	},
+		{   
+			nimi: "Juustosämpylä",
+			hinta: 2.5 	},
+		{
+			nimi: "Kinkkusämpylä",
+			hinta: 2.7 	},
+		{
+			nimi: "Pulla",
+			hinta: 1.7 	}
+		];
+	
+	function naytaHinta() {
+		var tuote = document.getElementById("tuote").value;
+		var teksti = "";
+		var i;
+		for (i = 0; i < hinnasto.length; i++) {
+			if (hinnasto[i].nimi == tuote) {
+			teksti = teksti + hinnasto[i].nimi + " " + hinnasto[i].hinta.toFixed(2) + "<br>"; 
+		} else {
+		
+				teksti = teksti + " Kyseistä tuotetta ei ole tarjolla.<br>";
+			}
+		}
+		document.getElementById("vastaus").innerHTML = "<p>" + teksti + "</p>";
+	
+	}
+
+	function naytaKaikki() {
+		var teksti = "";
+		var i;
+		for (i = 0; i < hinnasto.length; i++) {
+			teksti = teksti + hinnasto[i].nimi + " " + hinnasto[i].hinta.toFixed(2) + "<br>"; 
+		}
+		
+		// Vastauksen kirjoittaminen html-sivulle
+		document.getElementById("vastaus").innerHTML = "<p>" + teksti + "</p>";
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Parkkimaksu</title>
+
+<!-- 
+Funktio: Tee ohjelma, jolla voidaan laskea parkkimaksu. ParkkiPojat veloittaa 4 euroa/tunti. 
+Maksimiveloitus on 30 euroa. Tee ohjelma, joka kysyy asiakkaan pysäköintiajan 
+ja näyttää parkkimaksun suuruuden.
+Tee ohjelmaan funktio: laskeMaksu(parkkiaika)
+Funktio laskee ja palauttaa return-lauseella parkkimaksun suuruuden. Parametrina on parkkiaika.
+ -->
+</head>
+<body>
+	<h3>Parkkimaksu</h3>
+
+	<form>
+		
+		<p>
+			<label>Parkkiaika: </label> 
+			<input type="text" id="aika" size="6">
+		</p>
+		<p>
+			<input type="button" value="Laske" onclick="kasitteleTehtava()">
+		</p>
+	</form>
+
+	<!-- Tänne kirjoitetaan vastaus JavaScriptillä -->
+	<div id="vastaus"></div>
+	<!-- liitetään oma js-tiedosto tähän mukaan -> sama kansio joten nimi riittää	-->
+	<script type="text/javascript" src="funktiot.js"> </script>
+ 
+	<script type="text/javascript">
+	
+		function kasitteleTehtava() {
+		var aika = document.getElementById("aika").value;
+		var tulos = laske(aika);
+		document.getElementById("vastaus").innerHTML = "<p>Parkkimaksu on " + tulos
+					+ " euroa.</p>";
+		}
+		
+		// Funktio
+		function laske(aika) {
+			// Lomakekentän arvo
+			var aika = aika;
+					
+			var summa = 0;
+			var tulos = aika * 4;
+			
+			
+			if (tulos<30) {
+			tulos = tulos;
+			} else {
+			tulos = 30;
+			}
+			return tulos;
+			
+		}
+	</script>
+</body>
+</html>

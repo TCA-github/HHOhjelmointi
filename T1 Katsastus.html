@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Katsastus</title>
+<!--
+if-lause: 
+Tee ohjelma, jolla voidaan selvittää katsastusasemalla käynnin hinta.
+• pelkkä jälkitarkastus maksaa 30
+• katsastus maksaa 50
+•jos mitataan päästö, bensiiniautolla se on 22 ja dieselautolla 31
+ -->
+    <style type="text/css">
+label 
+{
+	display: block;
+	width: 19em;
+	float: left;
+}
+
+</style>
+</head>
+<body>
+	<h3>Katsastuskäynnin hinta</h3>
+
+	<form>
+		<p>
+		<label>Katsastuksen tyyppi (katsastus/jälkitarkastus):</label>
+		<input type="text" name="tyyppi" id="tyyppi" size="10">
+		</p>
+		<p>
+		<label>Mitataanko päästöt (kyllä/ei): </label>
+		<input type="text" name="paasto" id="paasto" size="10">
+		</p>
+		<p>
+		<label>Bensiini vai diesel (bensiini/diesel):</label> 
+		<input type="text" name="bensa" id="bensa" size="10"> 
+		</p>
+		
+		<input type="button" value="Laske"
+			onclick="laskeHinta()">
+	</form>
+
+	<!-- Tänne kirjoitetaan vastaus JavaScriptillä -->
+	<div id="vastaus"></div>
+
+	<script type="text/javascript">
+		function laskeHinta() {
+			// Lomakekentän lukema arvo
+			var tyyppi = document.getElementById("tyyppi").value;
+			var paasto = document.getElementById("paasto").value;
+			var bensa = document.getElementById("bensa").value;
+			
+			var summa = 0;
+
+			if (tyyppi == "katsastus" && paasto == "ei") {
+				summa = summa + 50;
+			} else if (tyyppi == "katsastus" && bensa == "bensiini") {
+			summa = summa + 50 + 22;
+			} else if (tyyppi == "katsastus" && bensa == "diesel"){
+			summa = summa + 50 + 31;
+			} else {
+			summa = summa + 30;
+			}
+			
+			
+			document.getElementById("vastaus").innerHTML = "<p>Katsastusmaksu on "
+					+ summa.toFixed(2) + " euroa.</p>";
+		}
+	</script>
+</body>
+</html>
